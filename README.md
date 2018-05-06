@@ -1,5 +1,5 @@
 # 我的作品
-[简易画板](https://ice-cor.github.io/works/canvas-demo/index.html)
+[简易画板](https://ice-cor.github.io/works/canvas-demo)
 
 
 [键盘导航](https://ice-cor.github.io/works/nav/index.html)
