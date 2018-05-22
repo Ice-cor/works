@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主页</title>
+</head>
+<body>
+    终于可以看见我拉~
+    <h1>你的用户名是：<span id="userName"></span></h1>
+    <script>
+        console.log(document.cookie)
+        let string = document.cookie
+        let name = string.split('=')[1]
+        userName.innerText = decodeURIComponent(name) || '未定义用户名'
+    </script>
+</body>
+</html>
