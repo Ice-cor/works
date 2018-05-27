@@ -313,13 +313,9 @@ let style = `/*
   `
 
 
-
-
-writeCode('',style)
-
 let duration = 50
 let animationId
-
+writeCode('',style)
 $('#buttons').on('click','button',(e)=>{
     let button = e.currentTarget
     let speed = $(button).attr('data-speed')
@@ -342,7 +338,7 @@ function writeCode(precode,code){
     return new Promise((resolve)=>{
         
         let n = 0
-         animationId= setTimeout(function fn(){
+        animationId = setTimeout(function fn(){
             n = n + 1
             codeArea.scrollTop = codeArea.scrollHeight
             codeArea.innerHTML = Prism.highlight(precode+code.substring(0,n), Prism.languages.css, 'css');
