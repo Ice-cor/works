@@ -13,7 +13,12 @@
         console.log(document.cookie)
         let string = document.cookie
         let name = string.split('=')[1]
-        userName.innerText = decodeURIComponent(name) || '未定义用户名'
+        userName.innerText = name ? decodeURIComponent(name) : '未定义用户名'
+        var date=new Date();   
+        //将date设置为过去的时间   
+        date.setTime(date.getTime()+10000);   
+        //将userId这个cookie删除   
+        document.cookie="sessionId=39860.84931145524; expires="+date.toGMTString(); 
     </script>
 </body>
 </html>

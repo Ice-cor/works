@@ -8,6 +8,8 @@ if (!port) {
     process.exit(1)
 }
 
+let sessions = {}
+
 var server = http.createServer(function (request, response) {
     var parsedUrl = url.parse(request.url, true)
     var pathWithQuery = request.url
@@ -24,9 +26,12 @@ var server = http.createServer(function (request, response) {
     console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
 
     if (path == "/") {
+        
         var string = fs.readFileSync('./index.html', 'utf8')
+        let userName = sessions[sessionId].userName
+        response.statusCode = 200
         response.setHeader('Content-Type', 'text/html; charset=utf-8')
-        response.write(string)
+        response.write(string)  
 
         response.end()
     } else if (path == "/main.js") {
@@ -120,22 +125,18 @@ var server = http.createServer(function (request, response) {
             })
             let name = decodeURIComponent(userName)
             if(found === true){
-                response.setHeader('Set-Cookie', `sign_in_userName=${userName}`)
+                let sessionId = Math.random()*100000
+                sessions[sessionId] = {sign_in_userName: userName}
+                response.setHeader('Set-Cookie', `sessionId=${sessionId}`)
                 response.statusCode = 200
-                response.write(userName)
+                // response.write(userName)
                 response.end()
             }else{
                 response.statusCode = 401
                 response.end()
             }
         })
-    }else if(path === "/index"){
-        var string = fs.readFileSync('./index.html', 'utf8')
-        response.setHeader('Content-Type', 'text/html; charset=utf-8')
-        response.statusCode = 200
-        response.write(string)
-        response.end()
-    } else {
+    }else {
         response.statusCode = 404
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
         response.write('请求失败')
