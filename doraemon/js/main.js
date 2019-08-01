@@ -1,6 +1,4 @@
 !function (){
-
-
 let style = `/*
   *大家好，今天给大家画一个多啦A梦
   *首先准备好大圆脸
@@ -320,16 +318,21 @@ $('#buttons').on('click','button',(e)=>{
     let button = e.currentTarget
     let speed = $(button).attr('data-speed')
     console.log(button)
+
     $(button).addClass('active').siblings('.active').removeClass('active')
     switch(speed){
         case 'nomal':
             duration = 50
+            _czc.push(["_trackEvent","正常按钮",'点击','哆啦A梦',1])
+            console.log(_czc)
             break
         case 'fast':
             duration = 10
+            _czc.push(["_trackEvent","快速按钮",'点击','哆啦A梦',2])
             break
         case 'end':
             animationEnd(style)
+            _czc.push(["_trackEvent","结束动画按钮",'点击','哆啦A梦',3])
             break
     }
 })

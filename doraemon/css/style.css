@@ -57,3 +57,10 @@ body{
     color: rgb(255, 255, 255);
     background: rgb(241, 84, 27);
 }
+
+.foot{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    
+}
